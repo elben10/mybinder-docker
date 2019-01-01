@@ -26,14 +26,21 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
+# list files
+RUN ls ${HOME}
+
 # Add conda
 RUN mkdir -p "${CONDA_DIR}" && \
     wget --quiet -O miniconda.sh "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" && \
     echo "${CONDA_MD5_CHECKSUM}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "${CONDA_DIR}" && \
-    echo "export PATH=${CONDA_DIR}/bin:\${PATH}" > /etc/profile.d/conda.sh && \
     rm miniconda.sh
-    
+
+# Add to profile
+USER root
+RUN echo "export PATH=${CONDA_DIR}/bin:\${PATH}" > /etc/profile.d/conda.sh
+USER ${NB_USER}
+
 # Update packages
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False && \
