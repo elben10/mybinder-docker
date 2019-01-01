@@ -6,12 +6,22 @@ ENV CONDA_DIR="${HOME}/conda"
 ENV PATH="${CONDA_DIR}/bin:${PATH}"
 ENV CONDA_VERSION="latest"
 ENV CONDA_MD5_CHECKSUM="e1045ee415162f944b6aebfe560b8fee"
+ENV HOME /home/${NB_USER}
 
 # Add user 
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+    
+# Add working directory
+WORKDIR ${HOME}
+
+# Make sure the contents of our repo are in ${HOME}
+COPY . ${HOME}
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
 
 # Add system commands
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
@@ -31,6 +41,3 @@ RUN conda update --all --yes && \
 
 # Add conda deps
 RUN conda env update -f deps.yml
-
-# Add working directory
-WORKDIR ${HOME}
