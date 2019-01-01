@@ -11,7 +11,7 @@ ENV CONDA_VERSION="latest"
 ENV CONDA_MD5="e1045ee415162f944b6aebfe560b8fee"
 
 # Install system dependencies
-RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
+# RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
 
 # Install Conda
 RUN mkdir -p "$CONDA_DIR" && \
