@@ -30,5 +30,5 @@ RUN conda update --all --yes && \
     conda
     rm -r "${CONDA_DIR}/pkgs/" && \
     
-Run conda env update -f environment.yml
+RUN conda env update -f environment.yml
 
