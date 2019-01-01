@@ -1,6 +1,10 @@
+ARG NB_USER
+ARG NB_UID
 ARG BASE_CONTAINER=frolvlad/alpine-glibc:alpine-3.8
 FROM $BASE_CONTAINER
 
+ENV USER ${NB_USER}
+ENV HOME /home/${NB_USER}
 ENV CONDA_DIR="/opt/conda"
 ENV PATH="$CONDA_DIR/bin:$PATH"
 ENV CONDA_VERSION="latest"
@@ -23,4 +27,9 @@ RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash &
     apk del --purge .build-dependencies && \
     \
     mkdir -p "$CONDA_DIR/locks" && \
-    chmod 777 "$CONDA_DIR/locks"
+    chmod 777 "$CONDA_DIR/locks" && \
+    \
+    adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
