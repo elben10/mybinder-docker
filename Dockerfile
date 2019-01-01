@@ -19,7 +19,7 @@ RUN mkdir -p "$CONDA_DIR" && \
     echo "${CONDA_MD5}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "$CONDA_DIR" && \
     echo "export PATH=$CONDA_DIR/bin:\$PATH" > /etc/profile.d/conda.sh && \
-    rm miniconda.sh
+    rm miniconda.sh && \
     echo $(which python)
 
 #     conda update --all --yes && \
