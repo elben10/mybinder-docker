@@ -30,7 +30,7 @@ RUN conda update --all --yes && \
     rm -r "${CONDA_DIR}/pkgs/"
 
 # Add conda deps
-RUN conda env update -f environment.yml
+RUN conda env update -f deps.yml
 
 # Add working directory
 WORKDIR ${HOME}
