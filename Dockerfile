@@ -12,7 +12,6 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-WORKDIR ${HOME}
 
 # Add system commands
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
