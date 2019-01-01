@@ -29,16 +29,16 @@ RUN conda update --all --yes && \
 #     apk del --purge .build-dependencies && \
 #     \
 #     mkdir -p "$CONDA_DIR/locks" && \
-#     chmod 777 "$CONDA_DIR/locks" && \
+#     chmod 777 "$CONDA_DIR/locks" && 
+
+# Add Notebook
+RUN pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook
 
 # ADD USER
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-    
-# Add Notebook
-RUN pip install --no-cache --upgrade pip && \
-    pip install --no-cache notebook
     
 WORKDIR ${HOME}
