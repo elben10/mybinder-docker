@@ -1,6 +1,6 @@
 ARG NB_USER
 ARG NB_UID
-ARG BASE_CONTAINER=frolvlad/alpine-glibc:alpine-3.8
+ARG BASE_CONTAINER=python:3.7-slim
 FROM $BASE_CONTAINER
 
 ENV USER ${NB_USER}
