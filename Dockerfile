@@ -18,7 +18,7 @@ RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
 
 # Add conda
 RUN mkdir -p "${CONDA_DIR}" && \
-    wget "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" -O miniconda.sh && \
+    wget --quiet -O miniconda.sh "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" && \
     echo "${CONDA_MD5_CHECKSUM}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "${CONDA_DIR}" && \
     echo "export PATH=${CONDA_DIR}/bin:\${PATH}" > /etc/profile.d/conda.sh && \
