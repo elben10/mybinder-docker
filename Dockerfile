@@ -19,19 +19,24 @@ RUN mkdir -p "$CONDA_DIR" && \
     echo "${CONDA_MD5}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "$CONDA_DIR" && \
     echo "export PATH=$CONDA_DIR/bin:\$PATH" > /etc/profile.d/conda.sh && \
-    rm miniconda.sh && \
-    echo $(which python)
+    rm miniconda.sh
+    
+# UPDATE CONDA
+RUN conda update --all --yes && \
+    conda config --set auto_update_conda False && \
+    rm -r "$CONDA_DIR/pkgs/"
 
-#     conda update --all --yes && \
-#     conda config --set auto_update_conda False && \
-#     rm -r "$CONDA_DIR/pkgs/" && \
-#     \
 #     apk del --purge .build-dependencies && \
 #     \
 #     mkdir -p "$CONDA_DIR/locks" && \
 #     chmod 777 "$CONDA_DIR/locks" && \
-#     \
-#     adduser --disabled-password \
-#     --gecos "Default user" \
-#     --uid ${NB_UID} \
-#     ${NB_USER}
+
+# ADD USER
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+    
+# Add Notebook
+RUN pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook
