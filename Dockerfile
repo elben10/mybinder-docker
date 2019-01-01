@@ -40,3 +40,5 @@ RUN adduser --disabled-password \
 # Add Notebook
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook
+    
+WORKDIR ${HOME}
