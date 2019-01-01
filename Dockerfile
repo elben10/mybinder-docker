@@ -41,14 +41,14 @@ ENV HOME /home/${NB_USER}
 
 FROM $BASE_CONTAINER
 
-# Install bash
+# # Install bash
 
-# install the notebook package
-RUN pip install --no-cache --upgrade pip && \
-    pip install --no-cache notebook
+# # install the notebook package
+# RUN pip install --no-cache --upgrade pip && \
+#     pip install --no-cache notebook
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-WORKDIR ${HOME}
+# RUN adduser --disabled-password \
+#     --gecos "Default user" \
+#     --uid ${NB_UID} \
+#     ${NB_USER}
+# WORKDIR ${HOME}
