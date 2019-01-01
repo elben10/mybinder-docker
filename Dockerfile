@@ -27,5 +27,6 @@ RUN mkdir -p "${CONDA_DIR}" && \
 # Update packages
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False && \
+    conda
     rm -r "${CONDA_DIR}/pkgs/" && \
 
