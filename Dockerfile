@@ -8,6 +8,9 @@ ENV CONDA_VERSION="latest"
 ENV CONDA_MD5_CHECKSUM="e1045ee415162f944b6aebfe560b8fee"
 ENV HOME /home/${NB_USER}
 
+# Add system commands
+RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
+
 # Add user 
 RUN adduser --disabled-password \
     --gecos "Default user" \
@@ -22,9 +25,6 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-
-# Add system commands
-RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
 
 # Add conda
 RUN mkdir -p "${CONDA_DIR}" && \
