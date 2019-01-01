@@ -10,15 +10,18 @@ ENV PATH="$CONDA_DIR/bin:$PATH"
 ENV CONDA_VERSION="latest"
 ENV CONDA_MD5="e1045ee415162f944b6aebfe560b8fee"
 
-# Install conda
+# Install system dependencies
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
-#     mkdir -p "$CONDA_DIR" && \
-#     wget "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" -O miniconda.sh && \
-#     echo "${CONDA_MD5}  miniconda.sh" | md5sum -c && \
-#     bash miniconda.sh -f -b -p "$CONDA_DIR" && \
-#     echo "export PATH=$CONDA_DIR/bin:\$PATH" > /etc/profile.d/conda.sh && \
-#     rm miniconda.sh && \
-#     \
+
+# Install Conda
+RUN
+    mkdir -p "$CONDA_DIR" && \
+    wget "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" -O miniconda.sh && \
+    echo "${CONDA_MD5}  miniconda.sh" | md5sum -c && \
+    bash miniconda.sh -f -b -p "$CONDA_DIR" && \
+    echo "export PATH=$CONDA_DIR/bin:\$PATH" > /etc/profile.d/conda.sh && \
+    rm miniconda.sh
+
 #     conda update --all --yes && \
 #     conda config --set auto_update_conda False && \
 #     rm -r "$CONDA_DIR/pkgs/" && \
