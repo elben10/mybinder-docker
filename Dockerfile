@@ -2,11 +2,11 @@ FROM frolvlad/alpine-glibc:alpine-3.8
 ARG NB_USER
 ARG NB_UID
 
+ENV HOME /home/${NB_USER}
 ENV CONDA_DIR="${HOME}/conda"
 ENV PATH="${CONDA_DIR}/bin:${PATH}"
 ENV CONDA_VERSION="latest"
 ENV CONDA_MD5_CHECKSUM="e1045ee415162f944b6aebfe560b8fee"
-ENV HOME /home/${NB_USER}
 
 # Add system commands
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
