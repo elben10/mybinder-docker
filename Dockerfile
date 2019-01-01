@@ -28,6 +28,9 @@ RUN mkdir -p "${CONDA_DIR}" && \
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False && \
     rm -r "${CONDA_DIR}/pkgs/"
-    
+
+# Add conda deps
 RUN conda env update -f environment.yml
 
+# Add working directory
+WORKDIR ${HOME}
