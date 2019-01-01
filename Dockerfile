@@ -2,8 +2,8 @@ FROM frolvlad/alpine-glibc:alpine-3.8
 ARG NB_USER
 ARG NB_UID
 
-ENV CONDA_DIR="~/conda"
-ENV PATH="$CONDA_DIR/bin:$PATH"
+ENV CONDA_DIR="${HOME}/conda"
+ENV PATH="${CONDA_DIR}/bin:${PATH}"
 ENV CONDA_VERSION="latest"
 ENV CONDA_MD5_CHECKSUM="e1045ee415162f944b6aebfe560b8fee"
 
@@ -12,6 +12,7 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
+WORKDIR ${HOME}
 
 # Add system commands
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
@@ -23,3 +24,4 @@ RUN mkdir -p "${CONDA_DIR}" && \
     bash miniconda.sh -f -b -p "${CONDA_DIR}" && \
     echo "export PATH=${CONDA_DIR}/bin:\${PATH}" > /etc/profile.d/conda.sh && \
     rm miniconda.sh
+
