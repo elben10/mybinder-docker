@@ -14,8 +14,7 @@ ENV CONDA_MD5="e1045ee415162f944b6aebfe560b8fee"
 RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
 
 # Install Conda
-RUN
-    mkdir -p "$CONDA_DIR" && \
+RUN mkdir -p "$CONDA_DIR" && \
     wget "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" -O miniconda.sh && \
     echo "${CONDA_MD5}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "$CONDA_DIR" && \
