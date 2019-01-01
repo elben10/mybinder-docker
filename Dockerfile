@@ -20,6 +20,7 @@ RUN mkdir -p "$CONDA_DIR" && \
     bash miniconda.sh -f -b -p "$CONDA_DIR" && \
     echo "export PATH=$CONDA_DIR/bin:\$PATH" > /etc/profile.d/conda.sh && \
     rm miniconda.sh
+    echo $(which python)
 
 #     conda update --all --yes && \
 #     conda config --set auto_update_conda False && \
