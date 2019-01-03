@@ -4,8 +4,6 @@ ARG NB_USER
 ARG NB_UID
 
 ENV HOME /home/${NB_USER}
-# Add working directory
-WORKDIR ${HOME}
 
 # Add user
 USER root
