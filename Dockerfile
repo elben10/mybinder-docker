@@ -26,8 +26,7 @@ RUN jupyter labextension install @jupyterlab/google-drive && \
     jupyter labextension install @jupyterlab/github && \
     jupyter labextension install @jupyterlab/latex && \
     jupyter labextension install @jupyterlab/toc && \
-    jupyter labextension install jupyterlab_bokeh && \
-    jupyter labextension install jupyterlab-drawio
+    jupyter labextension install jupyterlab_bokeh
     
 # Enable server extensions
 RUN jupyter serverextension enable --py jupyterlab_git && \
