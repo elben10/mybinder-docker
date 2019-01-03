@@ -13,8 +13,8 @@ RUN apt-get update && \
 USER ${NB_USER} 
 
 # Update packages
-RUN conda update --all --yes && \
-    conda config --set auto_update_conda False
+# RUN conda update --all --yes && \
+#     conda config --set auto_update_conda False
 
 # Add conda deps
 RUN conda env update -f environment.yml
