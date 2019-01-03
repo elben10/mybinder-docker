@@ -1,9 +1,9 @@
 FROM jupyter/scipy-notebook
 
 # Make sure the contents of our repo are in ${HOME} 
-COPY . ${HOME}
-USER root
-RUN chown -R ${NB_UID} ${HOME}
+# COPY . ${HOME}
+# USER root
+# RUN chown -R ${NB_UID} ${HOME}
 
 # Install system dependencies
 # RUN apt-get update && \
@@ -11,7 +11,7 @@ RUN chown -R ${NB_UID} ${HOME}
 #     {ADD PACKAGE HERE} && \
 #     rm -rf /var/lib/apt/lists/
 
-USER ${NB_USER} 
+# USER ${NB_USER} 
 
 # Update packages
 RUN conda update --all --yes && \
