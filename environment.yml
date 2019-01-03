@@ -2,6 +2,8 @@ name: base
 channels:
   - conda-forge
 dependencies:
-  - python=3.7.1
   - notebook
   - jupyterlab
+  - black
+  - pip:
+    - git+https://github.com/ryantam626/jupyterlab_black
