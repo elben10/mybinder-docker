@@ -4,7 +4,13 @@ FROM jupyter/base-notebook
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
+
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc
+
+USER ${NB_USER} 
 
 # Update packages
 RUN conda update --all --yes && \
