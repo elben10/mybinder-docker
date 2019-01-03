@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook
+FROM jupyter/scipy-notebook
 
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
@@ -6,9 +6,9 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 
 # Install system dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    gcc
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#     gcc
 
 USER ${NB_USER} 
 
