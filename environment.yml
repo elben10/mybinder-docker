@@ -3,3 +3,4 @@ dependencies:
   - pip:
     - jupyterlab-git
     - jupyterlab_github
+    - jupyterlab_latex
