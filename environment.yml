@@ -5,5 +5,7 @@ dependencies:
   - notebook
   - jupyterlab
   - black
+  - numpy
+  - pandas
   - pip:
     - git+https://github.com/ryantam626/jupyterlab_black
