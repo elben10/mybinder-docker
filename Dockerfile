@@ -5,15 +5,7 @@ ARG NB_UID
 
 ENV HOME /home/${NB_USER}
 
-# Add user
-USER root
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
 # Make sure the contents of our repo are in ${HOME}
-USER ${NB_USER}
 WORKDIR ${HOME}
 COPY . ${HOME}
 USER root
