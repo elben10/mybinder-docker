@@ -1,7 +1,4 @@
 name: base
 dependencies:
-  - gcc
-  - numpy
-  - pandas
   - pip:
     - jupyterlab-git
