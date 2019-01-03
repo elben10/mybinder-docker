@@ -1,5 +1,8 @@
 FROM jupyter/base-notebook
 
+RUN whoami
+RUN ls
+
 # Add conda deps
 RUN conda env update -f environment.yml
 
