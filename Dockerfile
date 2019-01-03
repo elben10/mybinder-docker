@@ -49,5 +49,6 @@ RUN conda update --all --yes && \
 RUN conda env update -f environment.yml
 
 # Enable extensions
-RUN jupyter labextension install @ryantam626/jupyterlab_black && \
-    jupyter serverextension enable --py jupyterlab_black
+RUN bash lab_extensions.sh && \
+    bash server_extensions.sh
+    
