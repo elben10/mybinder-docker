@@ -32,7 +32,6 @@ RUN ls ${HOME}
 # Add conda
 RUN mkdir -p "${CONDA_DIR}" && \
     wget --quiet -O miniconda.sh "http://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh" && \
-    echo "${CONDA_MD5_CHECKSUM}  miniconda.sh" | md5sum -c && \
     bash miniconda.sh -f -b -p "${CONDA_DIR}" && \
     rm miniconda.sh
 
