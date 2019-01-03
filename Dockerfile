@@ -17,8 +17,11 @@ USER ${NB_USER}
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False
 
-# Add conda deps
-RUN conda env update -f environment.yml
+# Install pip dependencies
+RUN pip install \
+    jupyterlab-git
+    jupyterlab_github
+    jupyterlab_latex
 
 # Install extensions
 RUN jupyter labextension install @jupyterlab/google-drive && \
