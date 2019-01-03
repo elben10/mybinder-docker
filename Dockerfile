@@ -9,7 +9,7 @@ ENV CONDA_VERSION="latest"
 ENV CONDA_MD5_CHECKSUM="e1045ee415162f944b6aebfe560b8fee"
 
 # Add system commands
-RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash
+RUN apk add --no-cache --virtual=.build-dependencies wget ca-certificates bash git
 
 # Add user 
 RUN adduser --disabled-password \
