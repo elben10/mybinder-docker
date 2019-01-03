@@ -13,7 +13,7 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER} 
 
-Update packages
+#Update packages
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False
 
