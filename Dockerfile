@@ -47,3 +47,7 @@ RUN conda update --all --yes && \
 
 # Add conda deps
 RUN conda env update -f environment.yml
+
+# Enable extensions
+RUN jupyter labextension install @ryantam626/jupyterlab_black && \
+    jupyter serverextension enable --py jupyterlab_black
