@@ -19,8 +19,8 @@ RUN conda update --all --yes && \
 
 # Install pip dependencies
 RUN pip install \
-    jupyterlab-git
-    jupyterlab_github
+    jupyterlab-git \
+    jupyterlab_github \
     jupyterlab_latex
 
 # Install extensions
