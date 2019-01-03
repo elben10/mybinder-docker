@@ -1,8 +1,5 @@
 FROM jupyter/base-notebook
 
-# ARG NB_USER
-# ARG NB_UID
-
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
 USER root
