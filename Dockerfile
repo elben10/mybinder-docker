@@ -4,14 +4,10 @@ ARG NB_USER
 ARG NB_UID
 
 # Make sure the contents of our repo are in ${HOME}
-WORKDIR ${HOME}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-
-# list files
-RUN ls ${HOME}
 
 # Update packages
 RUN conda update --all --yes && \
