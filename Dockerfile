@@ -13,7 +13,8 @@ RUN conda update --all --yes && \
 # Add conda deps
 RUN conda env update -f environment.yml
 
-# Enable extensions
-RUN bash lab_extensions.sh && \
-    bash server_extensions.sh
-    
+# Install extensions
+RUN jupyter labextension install @jupyterlab/git
+
+# Enable server extensions
+RUN jupyter serverextension enable --py jupyterlab_git
