@@ -35,7 +35,7 @@ RUN pip install \
     jupyterlab-git \
     jupyterlab_github \
     jupyterlab_latex \
-    https://github.com/elben10/jupyterlab-rstudio
+    git+https://github.com/elben10/jupyterlab-rstudio
 
 # Install extensions
 RUN jupyter labextension install @jupyterlab/google-drive && \
