@@ -26,7 +26,7 @@ USER $NB_USER
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
 ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/lib/R/lib"
 
-# Update packages
+# Update packages 
 RUN conda update --all --yes && \
     conda config --set auto_update_conda False
 
