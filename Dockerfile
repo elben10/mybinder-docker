@@ -4,18 +4,18 @@ USER root
 
 # Install R and Rstudio Server dependencies 
 RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-	fonts-dejavu \
-	gcc && \
-	gfortran \
-	libapparmor1 \
-	libedit2 \
-	libssl1.0.0 \
-	lsb-release \
-	psmisc \
-	tzdata \
-	apt-get clean && \
-	rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    gcc && \
+    gfortran \
+    libapparmor1 \
+    libedit2 \
+    libssl1.0.0 \
+    lsb-release \
+    psmisc \
+    tzdata \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install Rstudio Server
 RUN export RSTUDIO_PKG=rstudio-server-$(wget -qO- https://download2.rstudio.org/current.ver)-amd64.deb && \
