@@ -2,7 +2,7 @@ FROM jupyter/scipy-notebook
 
 USER root
 
-# Install R and Rstudio Server dependencies
+# Install R and Rstudio Server dependencies 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 	fonts-dejavu \
